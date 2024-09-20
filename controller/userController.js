@@ -25,10 +25,15 @@ const userController = {
     // 从请求参数中获取用户ID
     const id = req.params.id;
     const { email, nickName, password } = req.body;
-    // 调用userService的getUserInfo方法获取用户信息
+    // 查询该用户是否存在
     let user = await userService.findById(id);
     if (!user) {
       return sendResponse(res, 400, "修改失败,该用户不存在");
+    }
+    //查询要更改的邮箱是否被占用
+    user = await userService.getUserByEmail(email);
+    if (user) {
+      return sendResponse(res, 400, "修改失败,邮箱已被占用");
     }
     let result = await userService.updateUser({
       id,
