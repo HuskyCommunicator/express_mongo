@@ -1,9 +1,5 @@
 var userModel = require("../model/userModel");
 const userService = {
-  //获取用户列表
-  getUserList: async () => {
-    return userModel.find();
-  },
   //注册
   register: async ({ email, nickName, password }) => {
     return userModel.create({ email, nickName, password });
@@ -12,6 +8,11 @@ const userService = {
   login: async ({ email, password }) => {
     return userModel.findOne({ email, password });
   },
+  //获取用户列表
+  getUserList: async () => {
+    return userModel.find();
+  },
+
   //根据id获取用户信息
   findById: async (id) => {
     return userModel.findById({ _id: id });
