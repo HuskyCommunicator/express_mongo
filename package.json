@@ -14,5 +14,8 @@
     "mongoose": "^8.5.0",
     "morgan": "~1.9.1",
     "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5"
   }
 }
